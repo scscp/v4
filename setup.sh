@@ -40,45 +40,6 @@ touch /etc/xray/scdomain
 touch /etc/v2ray/scdomain
 
 
-echo -e "[ ${tyblue}NOTES${NC} ] Before we go.. "
-sleep 1
-echo -e "[ ${tyblue}NOTES${NC} ] I need check your headers first.."
-sleep 2
-echo -e "[ ${green}INFO${NC} ] Checking headers"
-sleep 1
-totet=`uname -r`
-REQUIRED_PKG="linux-headers-$totet"
-PKG_OK=$(dpkg-query -W --showformat='${Status}\n' $REQUIRED_PKG|grep "install ok installed")
-echo Checking for $REQUIRED_PKG: $PKG_OK
-if [ "" = "$PKG_OK" ]; then
-  sleep 2
-  echo -e "[ ${yell}WARNING${NC} ] Try to install ...."
-  echo "No $REQUIRED_PKG. Setting up $REQUIRED_PKG."
-  apt-get --yes install $REQUIRED_PKG
-  sleep 1
-  echo ""
-  sleep 1
-  echo -e "[ ${tyblue}NOTES${NC} ] If error you need.. to do this"
-  sleep 1
-  echo ""
-  sleep 1
-  echo -e "[ ${green}NOTES${NC} ] 1. apt update -y"  
-  echo -e "[ ${green}NOTES${NC} ] 2. apt upgrade -y"
-  echo -e "[ ${green}NOTES${NC} ] 3. apt dist-upgrade -y"
-  echo -e "[ ${green}NOTES${NC} ] 4. reboot"
-  sleep 1
-  echo -e "[ ${green}NOTES${NC} ] After rebooting"
-  echo -e "[ ${green}NOTES${NC} ] Then run this script again"
-
-ttet=`uname -r`
-ReqPKG="linux-headers-$ttet"
-if ! dpkg -s $ReqPKG  >/dev/null 2>&1; then
-  rm /root/setup.sh >/dev/null 2>&1 
-  exit
-else
-  clear
-fi
-
 
 secs_to_human() {
     echo "Installation time : $(( ${1} / 3600 )) hours $(( (${1} / 60) % 60 )) minute's $(( ${1} % 60 )) seconds"
