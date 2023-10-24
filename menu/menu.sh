@@ -32,7 +32,7 @@ BURIQ () {
 }
 
 MYIP=$(curl -sS ipv4.icanhazip.com)
-Name=$(curl -sS https://raw.githubusercontent.com/scscp-scscp/permission/main/ipmini | grep $MYIP | awk '{print $2}')
+Name=$(curl -sS https://raw.githubusercontent.com/scscp/permission/main/ipmini | grep $MYIP | awk '{print $2}')
 echo $Name > /usr/local/etc/.$Name.ini
 CekOne=$(cat /usr/local/etc/.$Name.ini)
 
@@ -273,7 +273,7 @@ MYIP=$(curl -sS ipv4.icanhazip.com)
 clear   
      echo -e " ${w}${NC}"
                     echo -e "         ┌───────────────────────────────────────────┐"
-		    echo -e "         |${GB}              BRINGAS TUNNEL              ${NC}" "|"
+		    echo -e "         |${GB}      wellcom to my script by candra     ${NC}" "|"
 		    echo -e "         └───────────────────────────────────────────┘"
                     echo -e "         │ ${c} IP VPS  : $IPVPS ${NC}"
                     echo -e "         │ ${c} CPU     : $cpu_usage ${NC}"  
